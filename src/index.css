@@ -4,7 +4,7 @@
 :root {
     --font-title: "Geologica", serif;
 
-	--backround: #F2F2F2;
+	--backround: #fff;
 	--color: #102039;
 	--color-main: #454cee;
 
@@ -13,6 +13,13 @@
 	--navbar-color: #F2F2F2;
 
 	--page-width: 900px;
+
+	--backround-checklist: #F4F5F7;
+	--border-radius: 5px;
+	--backround-checklist-border: #E2E4F6;
+
+
+	--backround-checklist-icon: #E2E4F6;
 }
 
 
@@ -51,3 +58,4 @@ code {
 	display: flex;
     justify-content: center;
 }
+

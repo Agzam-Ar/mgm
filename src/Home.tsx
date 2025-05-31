@@ -1,5 +1,6 @@
 
 import Progessbar from "./components/base/Progressbar";
+import Checklist from "./components/checklist/Checklist";
 import Navbar from "./components/Navbar";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
     
                 <h1>Задачи</h1>
 
+                <Checklist/>
             </div>
         </div>
     );
