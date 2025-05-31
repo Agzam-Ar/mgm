@@ -1,0 +1,99 @@
+
+.checklist-item-box {
+    display: flex;
+    align-items: flex-start;
+
+    background: var(--backround-checklist);
+    border-radius: var(--border-radius);
+    border: 2px var(--backround-checklist-border) solid;
+
+    --height: 50px;
+
+    height: fit-content;
+
+    font-family: var(--font-title);
+    margin-bottom: 5px;
+
+    box-shadow: 0px 4px 12px rgba(5, 12, 38, 0.12);
+}
+
+.checklist-item-box-absolute {
+    position: absolute;
+    height: 100%;
+    background: red;
+}
+
+.checklist-item-icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--height);
+    display: flex;
+    aspect-ratio: 1 / 1;
+    z-index: 9;
+}
+
+.checklist-item-icon-background {
+    --icon-height: calc(var(--height) * .5);
+    --color: var(--color-main);
+
+    height: var(--icon-height);
+    display: flex;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px var(--color) solid;
+    color: var(--color);
+    border-radius: 100%;
+    background: var(--backround-checklist-icon);
+}
+
+.checklist-item-icon-background > svg {
+    height: var(--icon-height);
+    width: var(--icon-height);
+    transform: scale(.6);
+}
+
+.checklist-item-content > h1 {
+    display: flex;
+    align-items: center;
+    font-size: calc(var(--height) / 2);
+    line-height: 2em;
+    padding: 0;
+    margin: 0;
+}
+
+.checklist-item-content > div {
+    padding-left: calc(var(--height) / 2);
+    white-space: break-spaces;
+    word-wrap: break-word;
+    border-left: 2px var(--color-main) solid;
+    /*border-bottom: 2px var(--color-main) solid;*/
+    padding-top:  calc(var(--height) / 2);
+    padding-bottom:  calc(var(--height) / 4);
+    margin-bottom:  calc(var(--height) / -4);
+    transform: translate(calc(var(--height) / -2), calc(var(--height) / -2));
+}
+
+.checklist-award-icon-box {
+    display: flex;
+    align-items: center;
+
+    --color: var(--color-main);
+    border: 2px var(--color) solid;
+    color: var(--color);
+    border-radius: var(--height);
+    background: var(--backround-checklist-icon);
+    padding: 0;
+    margin: 0;
+    height: fit-content;
+    font-size: 80%;
+    line-height: 1.5em;
+    margin-left: 10px;
+    padding: 0 5px;
+}
+
+.checklist-award-icon-box > svg {
+    margin-left: 5px;
+}
