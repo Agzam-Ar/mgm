@@ -4,9 +4,9 @@ import './Checklist.css'
 export default function Checklist() {
     return <div>
         
-        <ChecklistItem checked={true} header={"Вынест мусор"} content={"себя пока ненадо"} />
-        <ChecklistItem checked={true} header={"Собрать робота пылесоса"} />
-        <ChecklistItem checked={true} header={"Сходить в магазин"} content={"Помидоры\nОгурцы\nХлеб\nМолоко"} />
+        <ChecklistItem checked={true} score={10} header={"Вынест мусор"} content={"себя пока ненадо"} />
+        <ChecklistItem checked={true} score={37} header={"Собрать робота пылесоса"} />
+        <ChecklistItem checked={true} score={75} header={"Сходить в магазин"} content={"Помидоры\nОгурцы\nХлеб\nМолоко"} />
 
     </div>;
 }
@@ -14,10 +14,11 @@ export default function Checklist() {
 type ChecklistItemProps = {
     checked: boolean,
     header: string, // Заголовок
+    score: number, 
     content?: string, // Описание
 }
 
-function ChecklistItem({checked, header, content}:ChecklistItemProps) {
+function ChecklistItem({checked, score, header, content}:ChecklistItemProps) {
     return (
         <div className='checklist-item-box'>
             <div className='checklist-item-icon-box'>
@@ -26,13 +27,12 @@ function ChecklistItem({checked, header, content}:ChecklistItemProps) {
                 </div>
             </div>
             <div className='checklist-item-content'>
-                <h1>{header}</h1>
+                <h1>{header} 
+                    <div className='checklist-award-icon-box'>
+                        +{score} {Icons.score}
+                    </div>
+                </h1>
                 <div>{content}</div>
-            </div>
-            <div className='checklist-item-award'>
-                <div className='checklist-item-icon-background'>
-                    +10 {Icons.score}
-                </div>
             </div>
         </div>
     );
