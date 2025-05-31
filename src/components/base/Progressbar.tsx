@@ -1,16 +1,31 @@
 import React, { useEffect, useState } from "react";
 import Icons from "../../static/Icons";
+import "./Progressbar.css";
 
 type ProgressbarProps = {
-  min: number;
-  max: number;
-  value: number;
+  min?: number;
+  max?: number;
+  value?: number;
+  checkpointsCount?: number;
+  checkpointsMessages?: string[];
 };
 
-export default function Progressbar({ min, max, value }: ProgressbarProps) {
+export default function Progressbar({
+  min = 0,
+  max = 5000,
+  value = 5000,
+  checkpointsCount = 3,
+  checkpointsMessages = [ //это массив с фразами 
+    "Покормите ребёнка",
+    "Покормите ребёнка ещё раз",
+    "Последняя кормёжка!",
+  ],
+}: ProgressbarProps) {
   const range = max - min > 0 ? max - min : 1;
   const percent = Math.min(Math.max(((value - min) / range) * 100, 0), 100);
   const [progress, setProgress] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
   useEffect(() => {
     if (progress >= percent) return;
@@ -26,88 +41,63 @@ export default function Progressbar({ min, max, value }: ProgressbarProps) {
     return () => clearInterval(interval);
   }, [percent, progress]);
 
-  const step = 1000;
-  const stepsCount = max > 1000 ? Math.floor((max - min) / step) : 0;
-  const checkpoints = Array.from({ length: stepsCount }).map((_, i) => min + (i + 1) * step);
+  const cpCount = Math.min(Math.max(checkpointsCount, 1), 4);
+
+  const checkpoints = Array.from({ length: cpCount }).map((_, i) => {
+    const fraction = (i + 1) / (cpCount + 1);
+    return min + fraction * range;
+  });
+
+  const handleClick = (i: number, reached: boolean) => {
+    if (!reached) return;
+    setActiveIndex(activeIndex === i ? null : i);
+  };
 
   return (
-    <div className="progress-bar-box" style={{ width: "100%", padding: "20px" }}>
-      {/* Центрированный процент прогресса */}
-      <div
-        style={{
-          textAlign: "center",
-          fontSize: "18px",
-          fontWeight: "bold",
-          marginBottom: "8px",
-          color: "#222",
-        }}
-      >
-        {`${Math.round(progress)}%`}
+    <div className="progress-bar-box">
+      <div className="progress-text">
+        Текущий прогресс: <span className="progress-percent">{Math.round(progress)}%</span>
       </div>
 
-      {/* Прогресс-бар с чекпоинтами */}
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          height: "24px",
-          backgroundColor: "#e0e0e0",
-          borderRadius: "12px",
-          overflow: "visible",
-          userSelect: "none",
-        }}
-      >
-        {/* Заполненная часть прогресс-бара */}
+      <div className="progress-bar-container">
         <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            height: "100%",
-            width: "100%",
-            background:
-              "linear-gradient(90deg, var(--color-main) 0%, rgb(81, 238, 255) 50%, #60a5fa 100%)",
-            clipPath: `inset(0 ${100 - progress}% 0 0)`,
-            transition: "clip-path 0.3s ease-in-out",
-            borderRadius: "12px 0 0 12px",
-            zIndex: 1,
-          }}
+          className="progress-bar-fill"
+          style={{ clipPath: `inset(0 ${100 - progress}% 0 0)` }}
         />
 
-        {/* Чекпоинты внутри прогресс-бара */}
-{stepsCount > 0 &&
-  checkpoints.map((tickValue, i) => {
-    const leftPercent = ((tickValue - min) / range) * 100;
-    const reached = value >= tickValue;
+        {/* Checkpoints */}
+        {checkpoints.map((tickValue, i) => {
+          const leftPercent = ((tickValue - min) / range) * 100;
+          const reached = value >= tickValue;
+          const tooltipText = checkpointsMessages[i] || "";
 
-    return (
-      <div
-        key={i}
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: `${leftPercent}%`,
-          transform: "translate(-50%, -50%)",
-          width: "36px", // ⬆ больше кружок
-          height: "36px",
-          borderRadius: "50%",
-          backgroundColor: "#fff", // непрозрачный фон
-          border: "3px solid #3b82f6", // яркая синяя рамка
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "20px",
-          fontWeight: 700,
-          color: reached ? "#3b82f6" : "#fff",
-          zIndex: 5, // ⬆ поверх всего
-          boxSizing: "border-box",
-          pointerEvents: "none", // чтобы не мешали кликам
-        }}
-      >
-        {reached ? Icons.score : ""}
-      </div>
-    );
-  })}
+          return (
+            <div
+              key={i}
+              className={`checkpoint ${reached ? "reached" : ""}`}
+              style={{ left: `${leftPercent}%` }}
+              onClick={() => handleClick(i, reached)}
+              onMouseEnter={() => setHoverIndex(i)}
+              onMouseLeave={() => setHoverIndex(null)}
+            >
+              {reached ? <span className="checkpoint-icon">{Icons.score}</span> : null}
+              {activeIndex === i && hoverIndex === i && tooltipText && (
+                <div className="tooltip">
+                  {tooltipText}
+                  <div className="tooltip-arrow" />
+                </div>
+              )}
+            </div>
+          );
+        })}
+        <div
+          className={`checkpoint final ${value >= max ? "reached" : ""}`}
+          style={{ left: "100%" }}
+        >
+          {value >= max ? (
+            <span className="checkpoint-icon final-checkpoint-icon">{Icons.score}</span>
+          ) : null}
+        </div>
       </div>
     </div>
   );
