@@ -1,10 +1,19 @@
 
+import Progessbar from "./base/Progressbar";
+import Navbar from "./Navbar";
+
 export default function Home() {
-  return (
-    <div>
-      <h1>Main</h1>
-    </div>
-  );
+
+
+
+    return (
+        <div>
+            <Navbar/>
+            <h1 className="red">Main</h1>
+
+            <Progessbar/>
+        </div>
+    );
 }
 
 
