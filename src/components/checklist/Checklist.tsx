@@ -1,12 +1,15 @@
+import useChecklist from '../../hooks/useChecklist';
 import Icons from '../../static/Icons';
 import './Checklist.css'
 
 export default function Checklist() {
+
+    let items = useChecklist();
+
     return <div>
+
+        {items.map((e,i) => <ChecklistItem key={i} checked={e.done} score={e.score} header={e.title} content={e.desc} />)}
         
-        <ChecklistItem checked={true} score={10} header={"Вынест мусор"} content={"себя пока ненадо"} />
-        <ChecklistItem checked={true} score={37} header={"Собрать робота пылесоса"} />
-        <ChecklistItem checked={true} score={75} header={"Сходить в магазин"} content={"Помидоры\nОгурцы\nХлеб\nМолоко"} />
 
     </div>;
 }

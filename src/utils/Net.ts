@@ -1,3 +1,4 @@
+import { resolve } from "dns";
 
 
 const Net = {
@@ -20,7 +21,22 @@ const Net = {
 	 */
 	set: (url:string, value:string) => {
 		localStorage.setItem(url, value);
-	}
+	},
+
+
+	getJson: (url:string):Promise<any> => new Promise(resolve => {
+		resolve([{
+			done: true,
+			score: 10,
+			title: "Выбросить мусор",
+			desc: "себя пока что ненадо"
+		},{
+			done: false,
+			score: 20,
+			title: "Сходить в магазин",
+			desc: "Помидоры\nОгурцы\nХлеб\nМолоко"
+		}]);
+	})
 };
 
 export default Net;
