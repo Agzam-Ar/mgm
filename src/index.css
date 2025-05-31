@@ -49,7 +49,7 @@ code {
 
 .page-box {
 	margin-top: var(--navbar-height);
-	width: var(--page-width);
+	max-width: var(--page-width);
 	/*background: red;*/
 	padding: 0 var(--navbar-height);
 }
@@ -59,3 +59,7 @@ code {
     justify-content: center;
 }
 
+input {
+	outline: none;
+	border: none;
+}

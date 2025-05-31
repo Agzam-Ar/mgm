@@ -15,6 +15,9 @@
     margin-bottom: 5px;
 
     box-shadow: 0px 4px 12px rgba(5, 12, 38, 0.12);
+    padding-right: 7px;
+
+
 }
 
 .checklist-item-box-absolute {
@@ -55,25 +58,61 @@
     transform: scale(.6);
 }
 
-.checklist-item-content > h1 {
+.checklist-item-content > .h1 {
     display: flex;
     align-items: center;
     font-size: calc(var(--height) / 2);
     line-height: 2em;
     padding: 0;
     margin: 0;
+    font-weight: bold;
+    z-index: 9;
 }
 
-.checklist-item-content > div {
+.checklist-item-content > .h1 > input {
+    font: inherit;
+    border: none;
+    background: transparent;
+
+    /*border: 2px var(--color-main) dashed;*/
+}
+
+.checklist-item-content > .p {
     padding-left: calc(var(--height) / 2);
     white-space: break-spaces;
     word-wrap: break-word;
     border-left: 2px var(--color-main) solid;
     /*border-bottom: 2px var(--color-main) solid;*/
-    padding-top:  calc(var(--height) / 2);
-    padding-bottom:  calc(var(--height) / 4);
-    margin-bottom:  calc(var(--height) / -4);
-    transform: translate(calc(var(--height) / -2), calc(var(--height) / -2));
+    /*padding-top:  calc(var(--height) / 2);*/
+    /*padding-bottom:  calc(var(--height) / 4);*/
+    margin-bottom:  calc(var(--height) / 4);
+
+    margin-left: calc(var(--height) / -2);
+    /*margin-top: calc(var(--height) / 2);*/
+    transform: translate(0, 0);
+    z-index: 8;
+    resize: none;
+    width: 90%;
+    background: transparent;
+    height: fit-content;
+    overflow-y: hidden;
+    border: none !important;
+    outline: none !important;
+
+}
+
+.checklist-item-content > tetextarea.p {
+    background: transparent;
+    width: 90%;
+    resize: none !important;
+    background: transparent !important;
+}
+
+tetextarea {
+    resize: none !important;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
 }
 
 .checklist-award-icon-box {
@@ -86,7 +125,6 @@
     border-radius: var(--height);
     background: var(--backround-checklist-icon);
     padding: 0;
-    margin: 0;
     height: fit-content;
     font-size: 80%;
     line-height: 1.5em;
