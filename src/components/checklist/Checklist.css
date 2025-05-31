@@ -16,8 +16,14 @@
 
     box-shadow: 0px 4px 12px rgba(5, 12, 38, 0.12);
     padding-right: 7px;
+}
 
 
+.checklist-item-box.await {
+    --backround-checklist: orange;
+}
+.checklist-item-box.done {
+    --backround-checklist: lime;
 }
 
 .checklist-item-box-absolute {
@@ -73,12 +79,11 @@
     font: inherit;
     border: none;
     background: transparent;
-
     /*border: 2px var(--color-main) dashed;*/
 }
 
 .checklist-item-content > .p {
-    padding-left: calc(var(--height) / 2);
+    padding-left: 5px;
     white-space: break-spaces;
     word-wrap: break-word;
     border-left: 2px var(--color-main) solid;
@@ -87,7 +92,6 @@
     /*padding-bottom:  calc(var(--height) / 4);*/
     margin-bottom:  calc(var(--height) / 4);
 
-    margin-left: calc(var(--height) / -2);
     /*margin-top: calc(var(--height) / 2);*/
     transform: translate(0, 0);
     z-index: 8;
@@ -98,6 +102,8 @@
     overflow-y: hidden;
     border: none !important;
     outline: none !important;
+    font: inherit;
+    height: fit-content !important;
 
 }
 
@@ -106,7 +112,7 @@
     width: 90%;
     resize: none !important;
     background: transparent !important;
-}
+} 
 
 tetextarea {
     resize: none !important;
@@ -130,6 +136,13 @@ tetextarea {
     line-height: 1.5em;
     margin-left: 10px;
     padding: 0 5px;
+}
+
+.checklist-award-icon-box > input {
+    background: transparent;
+    font: inherit;
+    color: inherit;
+    width: 100px;
 }
 
 .checklist-award-icon-box > svg {
