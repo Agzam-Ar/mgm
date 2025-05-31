@@ -3,8 +3,7 @@ import Progessbar from "./components/base/Progressbar";
 import Checklist from "./components/checklist/Checklist";
 import Navbar from "./components/Navbar";
 
-export default function Home() {
-
+export default function Home({edit=false}:{edit?:boolean}) {
     return (
         <div className="body">
             <Navbar/>
@@ -12,7 +11,7 @@ export default function Home() {
                 <h1>Цель</h1>
                 <Progessbar/>
                 <h1>Задачи</h1>
-                <Checklist/>
+                <Checklist edit={edit}/>
             </div>
         </div>
     );
