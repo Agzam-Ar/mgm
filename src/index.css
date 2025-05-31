@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Geologica:wght@100..900&display=swap');
+
+
 :root {
+    --font-title: "Geologica", serif;
 
 	--backround: #F2F2F2;
 	--color: #102039;
+	--color-main: #454cee;
 
 	--navbar-height: 50px;
 	--navbar-background: #274069;
 	--navbar-color: #F2F2F2;
+
+	--page-width: 900px;
 }
 
 
@@ -35,4 +42,12 @@ code {
 
 .page-box {
 	margin-top: var(--navbar-height);
+	width: var(--page-width);
+	/*background: red;*/
+	padding: 0 var(--navbar-height);
+}
+
+.body {
+	display: flex;
+    justify-content: center;
 }
