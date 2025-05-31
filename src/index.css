@@ -1,3 +1,18 @@
+:root {
+
+	--backround: #F2F2F2;
+	--color: #102039;
+
+	--navbar-height: 50px;
+	--navbar-background: #274069;
+	--navbar-color: #F2F2F2;
+}
+
+
+html {
+	background: var(--backround);
+}
+
 body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +20,8 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
+
 }
 
 code {
@@ -13,5 +30,9 @@ code {
 
 
 .red {
-	background: red;
+	background: var(--color);
+}
+
+.page-box {
+	margin-top: var(--navbar-height);
 }

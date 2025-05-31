@@ -1,0 +1,23 @@
+
+.navbar-box {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+
+    height: var(--navbar-height);
+    background: var(--navbar-background);
+    color: var(--navbar-color);
+
+    display: grid;
+    grid-auto-columns: 1f 1f 1f;
+    padding: 0 var(--navbar-height);
+}
+
+.score-box {
+    margin: calc(var(--navbar-height) / 4);
+    background: #CEDEF5;
+    color: var(--color);
+    padding: 0 calc(var(--navbar-height) / 4);
+    border-radius: var(--navbar-height);
+}
