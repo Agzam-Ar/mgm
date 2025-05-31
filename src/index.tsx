@@ -5,17 +5,23 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './Home';
+import Pet from './Pet';
 
 const router = createBrowserRouter([
   {
     path: "/mgm/",
     element: <Home/>,
     errorElement: <div>404</div>,
-    
+
   },
   {
     path: "/mgm/edit",
     element: <Home edit={true}/>,
+    errorElement: <div>404</div>,
+  },
+  {
+    path: "/mgm/pet",
+    element: <Pet/>,
     errorElement: <div>404</div>,
   },
 ]);
