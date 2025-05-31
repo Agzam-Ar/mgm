@@ -4,8 +4,6 @@ import Checklist from "./components/checklist/Checklist";
 import Navbar from "./components/Navbar";
 
 export default function Home({edit=false}:{edit?:boolean}) {
-
-
     return (
         <div className="body">
             <Navbar/>
