@@ -1,5 +1,9 @@
 import { resolve } from "dns";
 
+const bc = new BroadcastChannel('net-channel');
+
+
+const listeners:any = {};
 
 const Net = {
 
@@ -26,17 +30,45 @@ const Net = {
 
 	getJson: (url:string):Promise<any> => new Promise(resolve => {
 		resolve([{
-			done: true,
+			done: 'undone',
 			score: 10,
 			title: "Выбросить мусор",
 			desc: "себя пока что ненадо"
 		},{
-			done: false,
+			done: 'undone',
 			score: 20,
 			title: "Сходить в магазин",
 			desc: "Помидоры\nОгурцы\nХлеб\nМолоко"
 		}]);
-	})
+	}),
+
+	setJson: (url:string, json:any):Promise<any> => new Promise(resolve => {
+		const message = JSON.stringify(json);
+		Net.set(url, message);
+		bc.postMessage(message);
+	}),
+
+	onJson: (type:string, listener:Function) => {
+		listeners[type] = listener;
+	},
+
+	sendJson: (url:string, json:any) => {
+		const message = {
+			type: url,
+			data: JSON.stringify(json),
+		};
+		console.log(message);
+		bc.postMessage(message);
+	},
+};
+
+
+
+bc.onmessage = (e) => {
+	for(let key of Object.keys(listeners)) {
+		if(key != e.data.type) continue; 
+		listeners[key](JSON.parse(e.data.data));
+	}
 };
 
 export default Net;
