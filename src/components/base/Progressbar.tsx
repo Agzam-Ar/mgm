@@ -70,23 +70,8 @@ export default function Progressbar({min = 0, max = 5000, value = 2000,	points =
 						</div>
 					);
 				})}
-				{/*<div className={`checkpoint final ${value >= max ? "reached" : ""}`} style={{ left: "100%" }}>
-					{value >= max ? (
-						<span className="checkpoint-icon final-checkpoint-icon">{Icons.check}</span>
-					) : null}
-				</div>*/}
 			</div>
 		</div>
 	);
 }
-// {`checkpoint final ${value >= max ? "reached" : ""}`}
-//           style={{ left: "100%" }}
-//         >
-//           {value >= max ? (
-//             <span className="checkpoint-icon final-checkpoint-icon">{Icons.check}</span>
-//           ) : null}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
+
