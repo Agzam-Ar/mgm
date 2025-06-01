@@ -10,9 +10,7 @@ export default function Home({edit=false}:{edit?:boolean}) {
             <div className="page-box">
                 <h1>Цель</h1>
                 <Progessbar/>
-    
                 <h1>Задачи</h1>
-
                 <Checklist edit={edit}/>
             </div>
         </div>
