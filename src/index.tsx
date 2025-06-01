@@ -8,34 +8,32 @@ import Home from './Home';
 import Pet from './Pet';
 
 const router = createBrowserRouter([
-  {
-    path: "/mgm/",
-    element: <Home/>,
-    errorElement: <div>404</div>,
+	{
+		path: "/mgm/",
+		element: <Home/>,
+		errorElement: <div>404</div>,
 
-  },
-  {
-    path: "/mgm/edit",
-    element: <Home edit={true}/>,
-    errorElement: <div>404</div>,
-  },
-  {
-    path: "/mgm/pet",
-    element: <Pet/>,
-    errorElement: <div>404</div>,
-  },
+	},
+	{
+		path: "/mgm/edit",
+		element: <Home edit={true}/>,
+		errorElement: <div>404</div>,
+	},
+	{
+		path: "/mgm/pet",
+		element: <Pet/>,
+		errorElement: <div>404</div>,
+	},
 ]);
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+	document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+	<React.StrictMode>
+		<RouterProvider router={router}/>
+	</React.StrictMode>
 );
-
-    // 
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
