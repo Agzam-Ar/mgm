@@ -2,9 +2,18 @@ import './Navbar.css'
 
 import Icons from '../static/Icons';
 import Net from '../utils/Net';
+import React from 'react';
+import Vars from '../static/Vars';
 
 export default function Navbar() {
-    const score = Net.get('score', "100");
+    const [score, setScore] = React.useState<number>(parseInt(Net.get('score', "" + Vars.score)));
+
+    React.useEffect(() => {
+        Net.onJson('set-score', (e:any) => {
+            Vars.score = e.score;
+            setScore(e.score);
+        });
+    }, []);
 
     return (
         <div className='navbar-box'>
