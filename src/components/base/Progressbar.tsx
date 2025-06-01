@@ -13,7 +13,7 @@ type ProgressbarProps = {
 export default function Progressbar({
   min = 0,
   max = 5000,
-  value = 5000,
+  value = 3000,
   checkpointsCount = 3,
   checkpointsMessages = [ //это массив с фразами 
     "Покормите ребёнка",

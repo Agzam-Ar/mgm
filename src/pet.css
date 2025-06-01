@@ -1,10 +1,8 @@
 .pet-img {
-  width: 80%; /* размер под себя */
+  width: 80%;
   max-width: 300px;
   height: auto;
   display: block;
-  /* margin: 230px 0 0 auto; */
-  /* transform: translateX(-13%); */
   cursor: pointer;
 }
 
@@ -15,10 +13,10 @@
 
 .page-box.pet {
   background: rgb(137, 137, 239);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .pet-img.jump {
@@ -71,16 +69,14 @@
   }
 }
 
-
 /* Кнопки под питомцем */
 .btn-container {
   margin-top: 20px;
   display: flex;
   gap: 15px;
-  justify-content: center; /* по центру */
+  justify-content: center;
 }
 
-/* Стиль кнопок */
 .action-btn {
   background-color: #454cee;
   color: white;
@@ -105,7 +101,6 @@
   transform: translateY(1px);
 }
 
-/* Анимация "eat" - можно потом кастомизировать */
 .pet-img.eat {
   animation: eatAnim 0.6s ease;
 }
@@ -121,15 +116,15 @@
   top: 80px;
   left: 50%;
   transform: translateX(-50%);
-  width: 320px; /* сделал плашку шире, чтобы поместились товары */
-  height: 320px; /* высоту можно подкорректировать */
+  width: 320px;
+  height: 320px;
   background: #fff;
   border: 2px solid #ccc;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 100;
-  overflow: visible; /* если надо, чтобы не обрезало */
+  overflow: visible;
 }
 
 .shop-header {
@@ -147,11 +142,10 @@
 }
 
 .shop-items {
-  display: flex; /* товары идут в линию */
-  gap: 20px; /* расстояние между товарами */
+  display: flex;
+  gap: 20px;
   justify-content: flex-start;
   align-items: center;
-  /* никаких wrap и скроллов */
 }
 
 .shop-item {
@@ -162,7 +156,7 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 10px;
-  width: 120px; /* фиксированная ширина товара */
+  width: 120px;
   cursor: pointer;
   transition: transform 0.2s;
 }
@@ -197,4 +191,64 @@
 
 .buy-btn:hover {
   background-color: #ffc107;
+}
+
+/* 🔽 Аксессуары */
+
+.pet-container {
+  position: relative;
+  display: inline-block;
+}
+
+.accessory-img {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+  width: 100px;
+}
+
+/* Позиции аксессуаров */
+.accessory-head {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Окно с аксессуарами */
+.accessories-popup {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 20px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.accessory-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.accessory-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accessory-item img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 6px;
 }
