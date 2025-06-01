@@ -29,17 +29,23 @@ const Net = {
 
 
 	getJson: (url:string):Promise<any> => new Promise(resolve => {
-		resolve([{
+		const placeholder = [{
+			id: 0,
 			done: 'undone',
 			score: 10,
 			title: "Выбросить мусор",
 			desc: "себя пока что ненадо"
 		},{
+			id: 1,
 			done: 'undone',
 			score: 20,
 			title: "Сходить в магазин",
 			desc: "Помидоры\nОгурцы\nХлеб\nМолоко"
-		}]);
+		}];
+ 		Net.sendJson('checklist-item-all', {
+ 			items: placeholder
+ 		});
+		resolve(placeholder);
 	}),
 
 	setJson: (url:string, json:any):Promise<any> => new Promise(resolve => {
@@ -53,11 +59,11 @@ const Net = {
 	},
 
 	sendJson: (url:string, json:any) => {
+		if(listeners[url]) listeners[url]({...json});
 		const message = {
 			type: url,
 			data: JSON.stringify(json),
 		};
-		console.log(message);
 		bc.postMessage(message);
 	},
 };

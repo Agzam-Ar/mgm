@@ -4,7 +4,7 @@
 :root {
     --font-title: "Geologica", serif;
 
-	--backround: #fff;
+	/*--backround: #fff;
 	--color: #102039;
 	--color-main: #454cee;
 
@@ -17,14 +17,31 @@
 	--backround-checklist: #F4F5F7;
 	--border-radius: 5px;
 	--backround-checklist-border: #E2E4F6;
+	--backround-checklist-icon: #E2E4F6;*/
+	
+	--backround: #EFF4FA;
+	--color: #1B2B79;
+	--color-main: #454cee;
 
+	--navbar-height: 50px;
+	--navbar-background: #1D2583;
+	--navbar-color: #F2F2F2;
 
+	--page-width: 900px;
+
+	--backround-checklist: #F4F5F7;
+	--border-radius: 20px;
+	--backround-checklist-border: #E2E4F6;
 	--backround-checklist-icon: #E2E4F6;
+
+
+
 }
 
 
 html {
 	background: var(--backround);
+	color: var(--color);
 }
 
 body {

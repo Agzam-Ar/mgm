@@ -16,14 +16,7 @@
 
     box-shadow: 0px 4px 12px rgba(5, 12, 38, 0.12);
     padding-right: 7px;
-}
-
-
-.checklist-item-box.await {
-    --backround-checklist: orange;
-}
-.checklist-item-box.done {
-    --backround-checklist: lime;
+    transition: .2s;
 }
 
 .checklist-item-box-absolute {
@@ -36,13 +29,33 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    display: flex;
+    aspect-ratio: 1 / 1;
+    z-index: 9;
+}
+
+.checklist-item-icon-box-check, .checklist-item-icon-box-remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: var(--height);
     display: flex;
     aspect-ratio: 1 / 1;
     z-index: 9;
 }
 
+.checklist-item-icon-box-remove {
+    margin-top: -15px;
+}
+
+.checklist-item-icon-box-remove > .checklist-item-icon-background {
+    --color: red;
+    background: #f6e2e2;
+}
+
 .checklist-item-icon-background {
+    user-select: none;
     --icon-height: calc(var(--height) * .5);
     --color: var(--color-main);
 
@@ -56,12 +69,22 @@
     color: var(--color);
     border-radius: 100%;
     background: var(--backround-checklist-icon);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.checklist-item-icon-background:hover {
+    transform: scale(1.15);
 }
 
 .checklist-item-icon-background > svg {
     height: var(--icon-height);
     width: var(--icon-height);
     transform: scale(.6);
+}
+
+.checklist-item-content {
+    color: inherit;
 }
 
 .checklist-item-content > .h1 {
@@ -79,6 +102,7 @@
     font: inherit;
     border: none;
     background: transparent;
+    color: inherit;
     /*border: 2px var(--color-main) dashed;*/
 }
 
@@ -104,7 +128,7 @@
     outline: none !important;
     font: inherit;
     height: fit-content !important;
-
+    color: inherit;
 }
 
 .checklist-item-content > tetextarea.p {
@@ -147,4 +171,38 @@ tetextarea {
 
 .checklist-award-icon-box > svg {
     margin-left: 5px;
+}
+
+
+
+.checklist-item-box.await {
+    /*--backround-checklist: #ffe3af;*/
+    --backround-checklist: orange;
+    color: #fff;
+}
+.checklist-item-box.done {
+    --backround-checklist: #27ff00;
+    color: #000;
+}
+
+.checklist-item-icon-background.await {
+    --color: #fff;
+    background: orange;
+}
+.checklist-item-icon-background.done {
+    --color: #000;
+    background: #27ff00;
+}
+
+
+.checklist-award-icon-box.await {
+    background: transparent;
+    color: #fff;
+    border-color: #fff;
+}
+
+.checklist-award-icon-box.done {
+    background: transparent;
+    color: #000;
+    border-color: #000;
 }
