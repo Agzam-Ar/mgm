@@ -34,7 +34,7 @@
 .navbar-size {
     width: calc(var(--page-width) - var(--navbar-height));
     display: grid;
-    grid-auto-columns: 1f 1f 1f;
+    grid-template-columns: 5em 1fr;
     align-items: center;
 }
 
@@ -42,4 +42,15 @@
     height: 1em;
     aspect-ratio: 1 / 1;
     padding-left: 5px;
+}
+
+a {
+    color: #ddd;
+    text-decoration: none;
+    transition: .2s;
+}
+
+
+a:hover {
+    color: #fff;
 }

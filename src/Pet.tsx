@@ -34,8 +34,8 @@ export default function Pet() {
     },
   };
   const defItems = [
-    { id: 1, img: "mgm/magaz1.png", price: 100, name: "Шляпа"},
-    { id: 2, img: "mgm/magaz2.png", price: 150, name: "Очки" },
+    { id: 1, img: "mgm/magaz1.png", price: 100, name: " "},
+    { id: 2, img: "mgm/magaz2.png", price: 150, name: " " },
   ];
   const [shopItems, setShopItems] = useState<Accessory[]>(JSON.parse(Net.get('shop-accessories', JSON.stringify(defItems))));
 

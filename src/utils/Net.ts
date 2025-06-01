@@ -34,17 +34,29 @@ const Net = {
 				id: 0,
 				done: 'undone',
 				score: 10,
-				title: "Выбросить мусор",
-				desc: "себя пока что ненадо"
+				title: "Помыть посуду",
+				desc: ""
 			},{
 				id: 1,
 				done: 'undone',
-				score: 20,
-				title: "Сходить в магазин",
-				desc: "Помидоры\nОгурцы\nХлеб\nМолоко"
+				score: 5,
+				title: "Убрать вещи",
+				desc: ""
+			},{
+				id: 2,
+				done: 'undone',
+				score: 30,
+				title: "Прибраться в комнате",
+				desc: "не забудь протереть подоконник"
+			},{
+				id: 3,
+				done: 'undone',
+				score: 50,
+				title: "Выгулять собаку",
+				desc: ""
 			}];
 
-			const placeholder = ph;//JSON.parse(Net.get('checklist-item-placeholder', JSON.stringify(ph)));
+			const placeholder = ph; // JSON.parse(Net.get('checklist-item-placeholder', JSON.stringify(ph)));
  			Net.sendJson('checklist-item-all', {
  				items: placeholder
  			});
@@ -53,10 +65,10 @@ const Net = {
 		}
 		if(url === '/api/marks') {
 			const ph = [
-				"A",
-				"B",
-				"C",
-				"D"
+				"Яблочный сок",
+				"Шоколадка",
+				"Поход в кино",
+				"Прогулка всей семъей"
 			];
 			const placeholder = ph;//JSON.parse(Net.get('checklist-item-placeholder', JSON.stringify(ph)));
  			Net.sendJson('checklist-item-all', {

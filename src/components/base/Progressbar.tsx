@@ -11,7 +11,7 @@ type ProgressbarProps = {
 	edit?:boolean;
 };
 
-export default function Progressbar({min = 0, max = 5000, value = 2000,	points = [], edit=false}: ProgressbarProps) {
+export default function Progressbar({min = 0, max = 200, value = 2000,	points = [], edit=false}: ProgressbarProps) {
 
 	const clampedValue = Math.max(min, Math.min(value, max));
 	const val = clampedValue / Math.max(1, (max - min));

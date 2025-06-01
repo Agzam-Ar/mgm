@@ -20,7 +20,7 @@ export default function Navbar() {
     return (
         <div className='navbar-box'>
             <div className='navbar-size'>
-                <div className='score-box'>{score+""}{Icons.score}</div>
+                <div className='score-box'>{score+""}{Icons.score}</div><a href='#pet'>Питомец</a>
             </div>
         </div>
     );
