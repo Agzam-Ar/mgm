@@ -14,6 +14,10 @@ const validate = (is:Task[], index:number) => {
 	}
 };
 
+const updatePlaceholder = (as:Task[]) => {
+	Net.set('checklist-item-placeholder', JSON.stringify(as));
+}
+
 export default function useChecklist():Task[] {
 	const [items, setItems] = React.useState<Task[]>([]);
  	React.useEffect(() => {
@@ -23,14 +27,16 @@ export default function useChecklist():Task[] {
 				const is = [...items];
 				validate(is, e.id);
 				is[e.id].title = e.value;
+				updatePlaceholder(is);
 				return is;
 			});
- 		});
+ 		}); 
  		Net.onJson('checklist-item-desc', (e:any) => {
 			setItems(items => {
 				const is = [...items];
 				validate(is, e.id);
 				is[e.id].desc = e.value;
+				updatePlaceholder(is);
 				return is;
 			});
  		});
@@ -39,6 +45,7 @@ export default function useChecklist():Task[] {
 				const is = [...items];
 				validate(is, e.id);
 				is[e.id].score = e.value;
+				updatePlaceholder(is);
 				return is;
 			});
  		});
@@ -47,6 +54,7 @@ export default function useChecklist():Task[] {
 				const is = [...items];
 				validate(is, e.id);
 				is[e.id].done = e.value;
+				updatePlaceholder(is);
 				return is;
 			});
  		});
@@ -57,10 +65,12 @@ export default function useChecklist():Task[] {
 					if(i == e.id) continue;
 					is.push(items[i]);
 				}
+				updatePlaceholder(is);
 				return is;
 			});
  		});
  		Net.onJson('checklist-item-all', (e:any) => {
+			updatePlaceholder(e.items);
 			setItems(e.items);
  		});
  	}, []);

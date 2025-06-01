@@ -29,7 +29,7 @@ const Net = {
 
 
 	getJson: (url:string):Promise<any> => new Promise(resolve => {
-		const placeholder = [{
+		const placeholder = JSON.parse(Net.get('checklist-item-placeholder', JSON.stringify([{
 			id: 0,
 			done: 'undone',
 			score: 10,
@@ -41,7 +41,7 @@ const Net = {
 			score: 20,
 			title: "Сходить в магазин",
 			desc: "Помидоры\nОгурцы\nХлеб\nМолоко"
-		}];
+		}])));
  		Net.sendJson('checklist-item-all', {
  			items: placeholder
  		});
