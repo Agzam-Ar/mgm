@@ -80,7 +80,7 @@ export default function Progressbar({
               onMouseEnter={() => setHoverIndex(i)}
               onMouseLeave={() => setHoverIndex(null)}
             >
-              {reached ? <span className="checkpoint-icon">{Icons.score}</span> : null}
+              {reached ? <span className="checkpoint-icon">{Icons.check}</span> : null}
               {activeIndex === i && hoverIndex === i && tooltipText && (
                 <div className="tooltip">
                   {tooltipText}
@@ -95,7 +95,7 @@ export default function Progressbar({
           style={{ left: "100%" }}
         >
           {value >= max ? (
-            <span className="checkpoint-icon final-checkpoint-icon">{Icons.score}</span>
+            <span className="checkpoint-icon final-checkpoint-icon">{Icons.check}</span>
           ) : null}
         </div>
       </div>
