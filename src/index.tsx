@@ -7,31 +7,33 @@ import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router
 import Home from './Home';
 import Pet from './Pet';
 
-const router = createBrowserRouter([
-	{
-		path: "/mgm/",
-		element: <Home/>,
-		errorElement: <div>404</div>,
-
-	},
-	{
-		path: "/mgm/edit",
-		element: <Home edit={true}/>,
-		errorElement: <div>404</div>,
-	},
-	{
-		path: "/mgm/pet",
-		element: <Pet/>,
-		errorElement: <div>404</div>,
-	},
-]);
+// const router = createBrowserRouter([
+// 	{
+// 		path: "/mgm/",
+// 		element: <Home/>,
+// 		errorElement: <div>404</div>,
+// 	},
+// 	{
+// 		path: "/mgm/edit/",
+// 		element: <Home edit={true}/>,
+// 		errorElement: <div>404</div>,
+// 	},
+// 	{
+// 		path: "/mgm/pet/",
+// 		element: <Pet/>,
+// 		errorElement: <div>404</div>,
+// 	},
+// ], {
+// 	basename: '/',
+// });
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
 );
 root.render(
 	<React.StrictMode>
-		<RouterProvider router={router}/>
+		<App/>
+		{/*<RouterProvider router={router}/>*/}
 	</React.StrictMode>
 );
 

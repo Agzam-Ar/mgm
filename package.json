@@ -1,7 +1,7 @@
 {
 	"name": "mgm",
 	"version": "0.1.0",
-	"homepage": "https://agzam-ar.github.io/mgm",
+	"homepage": "https://agzam-ar.github.io/mgm/",
 	"private": true,
 	"dependencies": {
 		"@testing-library/dom": "^10.4.0",
