@@ -29,23 +29,44 @@ const Net = {
 
 
 	getJson: (url:string):Promise<any> => new Promise(resolve => {
-		const placeholder = JSON.parse(Net.get('checklist-item-placeholder', JSON.stringify([{
-			id: 0,
-			done: 'undone',
-			score: 10,
-			title: "Выбросить мусор",
-			desc: "себя пока что ненадо"
-		},{
-			id: 1,
-			done: 'undone',
-			score: 20,
-			title: "Сходить в магазин",
-			desc: "Помидоры\nОгурцы\nХлеб\nМолоко"
-		}])));
- 		Net.sendJson('checklist-item-all', {
- 			items: placeholder
- 		});
-		resolve(placeholder);
+		if(url === '/api/items') {
+			const ph = [{
+				id: 0,
+				done: 'undone',
+				score: 10,
+				title: "Выбросить мусор",
+				desc: "себя пока что ненадо"
+			},{
+				id: 1,
+				done: 'undone',
+				score: 20,
+				title: "Сходить в магазин",
+				desc: "Помидоры\nОгурцы\nХлеб\nМолоко"
+			}];
+
+			const placeholder = ph;//JSON.parse(Net.get('checklist-item-placeholder', JSON.stringify(ph)));
+ 			Net.sendJson('checklist-item-all', {
+ 				items: placeholder
+ 			});
+			resolve(placeholder);
+			return;
+		}
+		if(url === '/api/marks') {
+			const ph = [
+				"A",
+				"B",
+				"C",
+				"D"
+			];
+			const placeholder = ph;//JSON.parse(Net.get('checklist-item-placeholder', JSON.stringify(ph)));
+ 			Net.sendJson('checklist-item-all', {
+ 				items: placeholder
+ 			});
+			resolve(placeholder);
+			return;
+		}
+
+		resolve(undefined);
 	}),
 
 	setJson: (url:string, json:any):Promise<any> => new Promise(resolve => {
@@ -59,7 +80,10 @@ const Net = {
 	},
 
 	sendJson: (url:string, json:any) => {
-		if(listeners[url]) listeners[url]({...json});
+		if(listeners[url]) {
+			if(json.length == undefined) listeners[url]({...json});
+			else listeners[url]([...json]);
+		}
 		const message = {
 			type: url,
 			data: JSON.stringify(json),

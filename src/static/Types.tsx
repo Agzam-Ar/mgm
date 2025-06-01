@@ -8,3 +8,5 @@ export type Task = {
 	score: number, 
 	desc?: string
 }
+
+export type Mark = string;
