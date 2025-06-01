@@ -1,6 +1,6 @@
 .progress-bar-box {
-  width: 100%;
-  padding: 20px;
+  width: calc(100% - 21px);
+  /* padding: 0 20px; */
   user-select: none;
 }
 
@@ -34,7 +34,7 @@
   height: 100%;
   width: 100%;
   background: linear-gradient(90deg, var(--color-main) 0%, rgb(81, 238, 255) 50%, #60a5fa 100%);
-  border-radius: 12px 0 0 12px;
+  border-radius: 12px;
   transition: clip-path 0.3s ease-in-out;
   z-index: 1;
 }
@@ -126,6 +126,7 @@
 }
 
 .final {
-    /* height: 42px; */
-    transform: scale(2) translate(-25%, -25%);
+    height: 42px;
+    /* opacity: .5; */
+    /* transform: translate(-100%, -50%); */
 }
